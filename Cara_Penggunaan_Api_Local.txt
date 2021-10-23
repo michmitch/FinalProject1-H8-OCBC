@@ -1,0 +1,45 @@
+Final Project 1
+Nama           : Michael Christiawan
+No. Peserta : FSDO001ONL013
+
+Untuk Project ada 2 macam, yaitu Project yang menggunakan MySQL Lokal dan MySQL Remote. Project yang menggunakan MySQL Lokal ada di directory Project/FinalProject1-013-Local dan untuk Project yang menggunakan MySQL Remote ada di directory Project/FinalProject1-013-SQLRemote. Project yang menggunakan MySQL Remote ini adalah project yang saya deploy ke Heroku menggunakan Docker. Tapi, jika ingin mencoba di Lokal bisa langsung membuka folder tersebut (Project/FinalProject1-013-SQLRemote) di Visual Studio Code lalu jalankan langkah-langkah di bawah ini mulai langsung dari nomor 3.
+
+Berikut langkah-langkah jika ingin menjalankan Project yang menggunakan MySQL Lokal:
+
+1. Jalankan Apache & MySQL di XAMPP, lalu import file payment.sql di folder MySQL Database ke localhost anda (jika belum ada)
+
+2. Buka folder Project/FinalProject1-013-Local di Visual Studio Code
+
+3. Buka Terminal di Visual Studio Code lalu jalankan command "dotnet run" tanpa tanda "
+
+4. Setelah running, masukkan URL https://localhost:5001/api/PaymentDetail atau http://localhost:5000/api/PaymentDetail di Postman
+
+5. Method yang tersedia yaitu Get, Post, Put, dan Delete
+   
+   Untuk Get ada Get All dan Get By Id
+   Get All akan otomatis terakses ketika memasukkan URL https://localhost:5001/api/PaymentDetail atau http://localhost:5000/api/PaymentDetail
+   Get By Id bisa diakses melalui URL https://localhost:5001/api/PaymentDetail/[id] atau http://localhost:5000/api/PaymentDetail/[id]
+   Get digunakan untuk mengambil data dari database. Bisa berdasarkan id atau bisa diambil semuanya
+   
+   Untuk Post, bisa dimasukkan ke bagian Body di Postman dengan format:
+   {
+	"paymentDetailId":[Id Payment Detail]
+	"cardOwnerName":"[Nama Owner Kartu]",
+	"cardNumber":"[Nomor Kartu]",
+	"expirationDate":"[Tanggal Expired]",
+	"securityCode":"[Kode Keamanan]",
+   }
+   Post digunakan untuk menambah record baru ke database
+   
+   Untuk Put, harus dimasukkan ID melalui URL https://localhost:5001/api/PaymentDetail/[id] atau http://localhost:5000/api/PaymentDetail/[id] dan di bagian Body juga harus diisikan data dengan format yang sama seperti Post
+   Put digunakan untuk melakukan update pada record sesuai dengan id
+   
+   Untuk Delete, juga harus dimasukkan ID melalui URL https://localhost:5001/api/PaymentDetail/[id] atau http://localhost:5000/api/PaymentDetail/[id]
+   Delete digunakan untuk menghapus record berdasarkan paymentDetailId
+
+6. Contoh Hasil Test API menggunakan Postman bisa dilihat pada gambar yang ada di folder Screenshot/Postman Result
+
+7. File Export dari response di Postman bisa dilihat pada folder File Export Postman
+
+8. Detail struktur dan record database bisa dilihat pada folder Screenshot
+Terima kasih

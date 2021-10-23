@@ -1,0 +1,41 @@
+Final Project 1
+Nama           : Michael Christiawan
+No. Peserta : FSDO001ONL013
+
+Berikut langkah-langkah jika ingin menjalankan Project yang telah di-deploy ke Heroku:
+
+1. Pastikan device terkoneksi dengan internet
+
+2. Masukkan URL https://finalproject01-013-sqlremote.herokuapp.com/api/PaymentDetail di Postman
+
+3. Method yang tersedia yaitu Get, Post, Put, dan Delete
+   
+   Untuk Get ada Get All dan Get By Id
+   Get All akan otomatis terakses ketika memasukkan URL https://finalproject01-013-sqlremote.herokuapp.com/api/PaymentDetail
+   Get By Id bisa diakses melalui URL https://finalproject01-013-sqlremote.herokuapp.com/api/PaymentDetail/[id]
+   Get digunakan untuk mengambil data dari database. Bisa berdasarkan id atau bisa diambil semuanya
+   
+   Untuk Post, bisa dimasukkan ke bagian Body di Postman dengan format:
+   {
+	"paymentDetailId":[Id Payment Detail]
+	"cardOwnerName":"[Nama Owner Kartu]",
+	"cardNumber":"[Nomor Kartu]",
+	"expirationDate":"[Tanggal Expired]",
+	"securityCode":"[Kode Keamanan]",
+   }
+   Post digunakan untuk menambah record baru ke database
+   
+   Untuk Put, harus dimasukkan ID melalui URL https://finalproject01-013-sqlremote.herokuapp.com/api/PaymentDetail/[id] dan di bagian Body juga harus diisikan data dengan format yang sama seperti Post
+   Put digunakan untuk melakukan update pada record sesuai dengan id
+   
+   Untuk Delete, juga harus dimasukkan ID melalui URL https://finalproject01-013-sqlremote.herokuapp.com/api/PaymentDetail/[id]
+   Delete digunakan untuk menghapus record berdasarkan id
+
+4. Contoh Hasil Test API menggunakan Postman bisa dilihat pada gambar yang ada di folder Screenshot/Postman Result/Heroku
+
+5. File Export dari response di Postman bisa dilihat pada folder File Export Postman/Heroku
+
+6. Detail struktur dan record database di MySQL Remote bisa dilihat pada folder Screenshot
+
+7. Hasil export data database di MySQL Remote bisa dilihat pada file paymentremote.sql di folder MySQL Database
+Terima kasih

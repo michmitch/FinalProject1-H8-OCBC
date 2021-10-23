@@ -1,0 +1,2 @@
+Github  : https://github.com/michmitch/FinalProject1-H8-OCBC
+Heroku : https://finalproject01-013-sqlremote.herokuapp.com/api/PaymentDetail
