@@ -27,7 +27,7 @@ namespace FinalProject1_013.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM payment", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM payment2", conn);
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -53,7 +53,7 @@ namespace FinalProject1_013.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM payment WHERE paymentDetailId=@id", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM payment2 WHERE paymentDetailId=@id", conn);
                 cmd.Parameters.AddWithValue("@id", id);
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -73,39 +73,66 @@ namespace FinalProject1_013.Models
             return list;
         }
 
-        public string DeletePaymentDetail(string id)
+        // public string DeletePaymentDetail(string id)
+        // {
+        //     List<PaymentDetailItem> list = new List<PaymentDetailItem>();
+
+        //     using (MySqlConnection conn = GetConnection())
+        //     {
+        //         conn.Open();
+        //         MySqlCommand cmd = new MySqlCommand("DELETE FROM payment2 WHERE paymentDetailId=@id", conn);
+        //         cmd.Parameters.AddWithValue("@id", id);
+                
+        //         if(cmd.ExecuteNonQuery() == 1){
+        //             return "ID " + id +  " Deleted";
+        //         }
+        //         else{
+        //             return "ID " + id + " Not Found";
+        //         }
+        //         // using (MySqlDataReader reader = cmd.ExecuteReader())
+        //         // {
+        //         //     while (reader.Read())
+        //         //     {
+        //         //         list.Add(new PaymentDetailItem()
+        //         //         {
+        //         //             paymentDetailId = reader.GetInt32("paymentDetailId"),
+        //         //             cardOwnerName = reader.GetString("cardOwnerName"),
+        //         //             cardNumber = reader.GetString("cardNumber"),
+        //         //             expirationDate = reader.GetString("expirationDate"),
+        //         //             securityCode = reader.GetString("securityCode")
+        //         //         });
+        //         //     }
+        //         // }
+                
+        //     }
+        //     // return list;
+        // }
+
+        public List<PaymentDetailItem> DeletePaymentDetail(string id)
         {
             List<PaymentDetailItem> list = new List<PaymentDetailItem>();
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("DELETE FROM payment WHERE paymentDetailId=@id", conn);
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM payment2 WHERE paymentDetailId=@id", conn);
                 cmd.Parameters.AddWithValue("@id", id);
-                
-                if(cmd.ExecuteNonQuery() == 1){
-                    return "ID " + id +  " Deleted";
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new PaymentDetailItem()
+                        {
+                            paymentDetailId = reader.GetInt32("paymentDetailId"),
+                            cardOwnerName = reader.GetString("cardOwnerName"),
+                            cardNumber = reader.GetString("cardNumber"),
+                            expirationDate = reader.GetString("expirationDate"),
+                            securityCode = reader.GetString("securityCode")
+                        });
+                    }
                 }
-                else{
-                    return "ID " + id + " Not Found";
-                }
-                // using (MySqlDataReader reader = cmd.ExecuteReader())
-                // {
-                //     while (reader.Read())
-                //     {
-                //         list.Add(new PaymentDetailItem()
-                //         {
-                //             paymentDetailId = reader.GetInt32("paymentDetailId"),
-                //             cardOwnerName = reader.GetString("cardOwnerName"),
-                //             cardNumber = reader.GetString("cardNumber"),
-                //             expirationDate = reader.GetString("expirationDate"),
-                //             securityCode = reader.GetString("securityCode")
-                //         });
-                //     }
-                // }
-                
             }
-            // return list;
+            return list;
         }
 
         public List<PaymentDetailItem> InsertPaymentDetail(PaymentDetailItem paymentDetail)
@@ -116,7 +143,7 @@ namespace FinalProject1_013.Models
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO payment(cardOwnerName, cardNumber, expirationDate, securityCode) VALUES('" 
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO payment2(cardOwnerName, cardNumber, expirationDate, securityCode) VALUES('" 
                 + paymentDetail.cardOwnerName + "','"
                 + paymentDetail.cardNumber + "','" 
                 + paymentDetail.expirationDate + "','" 
@@ -126,7 +153,7 @@ namespace FinalProject1_013.Models
                 // cmd.Parameters.AddWithValue("@duration", duration);
                 // cmd.Parameters.AddWithValue("@releasedate", releasedate);
                 if(cmd.ExecuteNonQuery() == 1){
-                    MySqlCommand cmd_get = new MySqlCommand("SELECT * FROM payment ORDER BY paymentDetailId DESC LIMIT 1", conn);
+                    MySqlCommand cmd_get = new MySqlCommand("SELECT * FROM payment2 ORDER BY paymentDetailId DESC LIMIT 1", conn);
                     
                     using (MySqlDataReader reader = cmd_get.ExecuteReader())
                     {
@@ -157,13 +184,13 @@ namespace FinalProject1_013.Models
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("UPDATE payment SET cardOwnerName='" + paymentDetail.cardOwnerName 
+                MySqlCommand cmd = new MySqlCommand("UPDATE payment2 SET cardOwnerName='" + paymentDetail.cardOwnerName 
                 +"', cardNumber='" + paymentDetail.cardNumber 
                 + "', expirationDate='" + paymentDetail.expirationDate 
                 + "', securityCode='" + paymentDetail.securityCode 
                 + "' WHERE paymentDetailId=" + id, conn);
                 if(cmd.ExecuteNonQuery() == 1){
-                    MySqlCommand cmd_get = new MySqlCommand("SELECT * FROM payment WHERE paymentDetailId=@id", conn);
+                    MySqlCommand cmd_get = new MySqlCommand("SELECT * FROM payment2 WHERE paymentDetailId=@id", conn);
                     cmd_get.Parameters.AddWithValue("@id", id);
                     using (MySqlDataReader reader = cmd_get.ExecuteReader())
                     {
