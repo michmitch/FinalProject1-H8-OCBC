@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2021 at 01:29 PM
+-- Generation Time: Nov 03, 2021 at 03:53 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -25,33 +25,34 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `payment`
+-- Table structure for table `payment2`
 --
 
-CREATE TABLE `payment` (
+CREATE TABLE `payment2` (
   `paymentDetailId` int(11) NOT NULL,
   `cardOwnerName` varchar(255) NOT NULL,
-  `cardNumber` varchar(255) NOT NULL,
-  `expirationDate` date NOT NULL,
+  `cardNumber` varchar(16) NOT NULL,
+  `expirationDate` varchar(255) NOT NULL,
   `securityCode` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `payment`
+-- Dumping data for table `payment2`
 --
 
-INSERT INTO `payment` (`paymentDetailId`, `cardOwnerName`, `cardNumber`, `expirationDate`, `securityCode`) VALUES
-(1, 'Budi', '123456', '2024-10-21', '123ABC456'),
-(2, 'Joko', '234567', '2025-11-21', '234BCD567');
+INSERT INTO `payment2` (`paymentDetailId`, `cardOwnerName`, `cardNumber`, `expirationDate`, `securityCode`) VALUES
+(1, 'Ava Elliott', '1233211233211233', '01/22', '123'),
+(2, 'Hendrix Jimi', '1231231231231231', '11/24', '111'),
+(4, 'tes edit', '1234333333333333', '10/23', '333');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `payment`
+-- Indexes for table `payment2`
 --
-ALTER TABLE `payment`
+ALTER TABLE `payment2`
   ADD PRIMARY KEY (`paymentDetailId`);
 
 --
@@ -59,10 +60,10 @@ ALTER TABLE `payment`
 --
 
 --
--- AUTO_INCREMENT for table `payment`
+-- AUTO_INCREMENT for table `payment2`
 --
-ALTER TABLE `payment`
-  MODIFY `paymentDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `payment2`
+  MODIFY `paymentDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
