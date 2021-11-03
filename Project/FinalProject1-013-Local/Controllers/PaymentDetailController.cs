@@ -54,7 +54,7 @@ namespace FinalProject1_013.Controllers
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public string DeletePaymentDetail(String id)
+        public ActionResult<IEnumerable<PaymentDetailItem>> DeletePaymentDetail(String id)
         {
             _context = HttpContext.RequestServices.GetService(typeof(PaymentDetailContext)) as PaymentDetailContext;
             return _context.DeletePaymentDetail(id);
