@@ -29,6 +29,7 @@ namespace FinalProject1_013
         {
             services.AddControllers();
             services.AddSwaggerGen();
+            services.AddCors();
             services.Add(new ServiceDescriptor(typeof(Models.PaymentDetailContext), new Models.PaymentDetailContext(Configuration.GetConnectionString("DefaultConnection"))));
         }
 
@@ -45,6 +46,10 @@ namespace FinalProject1_013
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseAuthorization();
 
